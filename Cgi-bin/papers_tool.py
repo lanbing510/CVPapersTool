@@ -10,7 +10,7 @@ import urllib2
 from BeautifulSoup import BeautifulSoup
 
 
-def readBuf(fsrc, length=16*1024):
+def readBuf(fsrc, length=1024):
     """解决一次性读取时出现的 self._sock.recv(left) error:[Errno 10054],分批读取并最后返回数据"""
     while 1:
         buf = fsrc.read(length)
