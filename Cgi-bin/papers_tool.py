@@ -6,12 +6,27 @@ Created on Fri Sep 06 12:52:17 2013
 """
 
 import re
-import urllib
+import urllib2
 from BeautifulSoup import BeautifulSoup
+
+
+def readBuf(fsrc, length=16*1024):
+    """解决一次性读取时出现的 self._sock.recv(left) error:[Errno 10054],分批读取并最后返回数据"""
+    while 1:
+        buf = fsrc.read(length)
+        if not buf:
+            break
+        return buf
+
 
 def loadUrl(url="http://www.cvpapers.com/cvpr2013.html"):
     full_url=url
-    response=urllib.urlopen(full_url)
+    headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',\
+    'Host':'www.cvpapers.com'}
+    request=urllib2.Request(full_url,headers=headers)
+    response=urllib2.urlopen(request)
+    response=readBuf(response)
+
     soup=BeautifulSoup(response)
     pool=soup.findAll('dt')
     despool={}

@@ -42,9 +42,9 @@ despool,keylistpool=proc_papers()
 printPapers(despool,keylistpool)
 shtml=  """
         <font style="font-family: Arial;" size="-1">
-        <P>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         <P>
-        total papers: %s<P>
-        revelant papers: %s<P>
+        <hr>
+        <P>
+        Total Papers: %s &nbsp; &nbsp; &nbsp; &nbsp; Revelant Papers: %s<P>
         """
 print shtml % (len(despool),len(keylistpool))
