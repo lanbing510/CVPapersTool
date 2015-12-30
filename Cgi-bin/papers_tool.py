@@ -21,7 +21,6 @@ def readBuf(fsrc, length=16*1024):
             result+=buf
     return result
 
-
 def loadUrl(url="http://www.cvpapers.com/cvpr2013.html"):
     full_url=url
     headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',\
